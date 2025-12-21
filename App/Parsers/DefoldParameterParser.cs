@@ -13,7 +13,7 @@ namespace App.Parsers
 
         public override DefoldParameter Parse()
         {
-            var optional = Param.Name.StartsWith('[');
+            var optional = Param.Name.StartsWith('[') || Param.Optional;
 
             return new DefoldParameter {
                 Name = Param.Name.Trim('[', ']'),

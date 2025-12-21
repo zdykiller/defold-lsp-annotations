@@ -1,5 +1,6 @@
 ﻿using App.Utils;
 using System.Text.Json.Serialization;
+using App.Converters;
 
 namespace App.Dtos
 {
@@ -10,7 +11,10 @@ namespace App.Dtos
         public string Description { get; set; } // TODO: Capitalize
         public string[] Types { get; set; }
         public bool Required => !Optional;
+        [JsonPropertyName("is_optional")]
+        [JsonConverter(typeof(BoolJsonConverter))]
         public bool Optional { get; set; }
+        
 
         public string TypeAnnotation()
         {
