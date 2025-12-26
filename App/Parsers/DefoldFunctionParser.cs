@@ -21,7 +21,7 @@ namespace App.Parsers
                 Description = ParseDescription(),
                 Parameters = parameters,
                 ReturnValues = returnValues,
-                Overloads = OverloadsFromOptionalParams(parameters, returnValues).ToArray(),
+                // Overloads = OverloadsFromOptionalParams(parameters, returnValues).ToArray(),
                 // TODO: parse examples
                 Examples = "TODO",
             };
