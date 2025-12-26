@@ -162,7 +162,7 @@ namespace ConsoleApp
         {
             Directory.CreateDirectory(outputDirectory);
             var path = Path.Combine(outputDirectory, filename);
-            using (var f = new StreamWriter(path)) {
+            using (var f = new StreamWriter(path, true)) {
                 foreach (var line in lines)
                     f.WriteLine(line);
             }
