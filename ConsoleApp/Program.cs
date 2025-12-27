@@ -162,6 +162,7 @@ namespace ConsoleApp
         {
             Directory.CreateDirectory(outputDirectory);
             var path = Path.Combine(outputDirectory, filename);
+            // append write for multi json doc parsed with same name
             using (var f = new StreamWriter(path, true)) {
                 foreach (var line in lines)
                     f.WriteLine(line);

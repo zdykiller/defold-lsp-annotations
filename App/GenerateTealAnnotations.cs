@@ -72,7 +72,7 @@ namespace App
             foreach (var element in apiRef.Elements) {
                 switch (element.Type.ToLowerInvariant()) {
                     case "variable":
-                    case "constant":
+                    case "constant": // for teal declare constant
                         if (first) {
                             first = false;
                             yield return "";
