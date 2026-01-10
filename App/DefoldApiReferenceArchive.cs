@@ -64,7 +64,7 @@ namespace App
                 .Where(filename => !filename.StartsWith("dm")) // ignore C docs
                 .Where(filename => !ignoredFiles.Contains(filename))
                 // temporary ignore proto files, teal generate conflicts record
-                .Where(filenames => !filenames.StartsWith("proto-"))
+                // .Where(filenames => !filenames.StartsWith("proto-"))
                 .ToArray();
         }
 

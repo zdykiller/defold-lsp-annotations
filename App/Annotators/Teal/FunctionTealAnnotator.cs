@@ -84,7 +84,31 @@ namespace App.AnnotatorsTeal
         string FunctionDefinition(IEnumerable<DefoldParameter> parameters, IEnumerable<DefoldReturnValue> returnValues)
         {
             var functionName = Element.Name.Split(".").Last();
-            var formattedParams = parameters.Select(x => $"{ParameterName(x.Name)}{(x.Optional ? "?" : "")}: {TypeAnnotation(x.Types)}");
+            var formattedParams = parameters.Select(x =>
+            {
+                var returnVal = "";
+                var paramName = ParameterName(x.Name);
+                if (paramName.Contains("..."))
+                {
+                    paramName = "...";
+                }
+                else
+                {
+                    paramName += x.Optional ? "?" : "";
+                }
+                returnVal += paramName;
+
+                var typeValue = TypeAnnotation(x.Types);
+                if (typeValue.StartsWith("..."))
+                {
+                    typeValue = typeValue.Substring(2);
+                }
+
+                returnVal += $": {typeValue}";
+                
+                // return $"{ParameterName(x.Name)}{(x.Optional ? "?" : "")}: {TypeAnnotation(x.Types)}";
+                return returnVal;
+            });
 
             switch (Element.Name) {
                 case "collectionfactory.create":

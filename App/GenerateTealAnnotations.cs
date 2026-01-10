@@ -42,7 +42,10 @@ namespace App
                 name = newName;
             }
 
-            yield return $"global record {name}";
+            if (!apiRef.emptyGlobalRecord)
+            {
+                yield return $"global record {name}";    
+            }
 
             bool first = true;
 
@@ -85,7 +88,10 @@ namespace App
                 }
             }
 
-            yield return $"end";
+            if (!apiRef.emptyGlobalRecord)
+            {
+                yield return $"end";    
+            }
 
             first = true;
 
@@ -358,10 +364,9 @@ namespace App
         #endregion
 
         public static string[] workingApi = new string[] {
-            "b2d",
-            "b2d_body",
             "base_defold",
-            "bitop",
+            "b2d_body",
+            "b2d",
             "buffer",
             "builtins",
             "camera",
@@ -371,8 +376,8 @@ namespace App
             "crash",
             "factory",
             "game_object",
-            "graphics",
             "gui",
+            "graphics",
             "html5",
             "http",
             "image",

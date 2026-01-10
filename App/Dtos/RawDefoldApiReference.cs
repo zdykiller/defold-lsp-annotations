@@ -4,5 +4,7 @@
     {
         public RawApiRefElement[] Elements { get; set; }
         public RawApiRefInfo Info { get; set; }
+        
+        public bool emptyGlobalRecord { get; set; }
     }
 }

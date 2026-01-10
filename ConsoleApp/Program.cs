@@ -84,7 +84,13 @@ namespace ConsoleApp
             foreach (var filename in apiRefArchive.Files) {
                 RawApiReference apiRef = apiRefArchive.ExtractAndDeserialize(filename);
                 // clean filenames
-                var destFilenameWithoutExtension = apiRef.Info.Name
+                var destFileName = apiRef.Info.Name;
+                if(filename.Contains("proto-"))
+                {
+                    // destFileName = apiRef.Info.Name + "_proto";
+                    apiRef.emptyGlobalRecord = true;
+                }
+                var destFilenameWithoutExtension = destFileName//apiRef.Info.Name
                     .Replace(" ", "_")
                     .Replace(".", "_")
                     .Replace("-", "")
@@ -92,9 +98,9 @@ namespace ConsoleApp
                 SaveFile(outputSeparateDir, $"{destFilenameWithoutExtension}.d.tl", GenerateTealAnnotations(apiRef));
             }
 
-            var fullDefinition = App.GenerateTealAnnotations.GenerateFullDefinition(outputSeparateDir);
+            // var fullDefinition = App.GenerateTealAnnotations.GenerateFullDefinition(outputSeparateDir);
 
-            SaveFile(outputDirectory, "defold.d.tl", fullDefinition);
+            // SaveFile(outputDirectory, "defold.d.tl", fullDefinition);
         }
 
         static void GenerateHelperLuaModules(DefoldApiReferenceArchive apiRefArchive, string outputDirectory)
