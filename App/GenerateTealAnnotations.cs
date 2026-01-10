@@ -358,9 +358,10 @@ namespace App
         #endregion
 
         public static string[] workingApi = new string[] {
-            "base_defold",
-            "b2d_body",
             "b2d",
+            "b2d_body",
+            "base_defold",
+            "bitop",
             "buffer",
             "builtins",
             "camera",
@@ -370,8 +371,8 @@ namespace App
             "crash",
             "factory",
             "game_object",
-            "gui",
             "graphics",
+            "gui",
             "html5",
             "http",
             "image",
